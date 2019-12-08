@@ -157,7 +157,7 @@ class AbstractVpn(BaseConfig):
         if hasattr(backend, 'auto_client'):
             context_keys = self._get_auto_context_keys()
             # add curly brackets for netjsonconfig context evaluation
-            for key in context_keys.keys():
+            for key in list(context_keys.keys()):
                 context_keys[key] = '{{%s}}' % context_keys[key]
             # do not include cert and key if auto_cert is False
             if not auto_cert:

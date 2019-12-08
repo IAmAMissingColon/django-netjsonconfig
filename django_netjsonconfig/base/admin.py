@@ -104,7 +104,7 @@ class BaseConfigAdmin(BaseAdmin):
         """
         kwargs = {}
         config_model = self._get_config_model()
-        for key, value in request.POST.items():
+        for key, value in list(request.POST.items()):
             # skip keys that are not model fields
             try:
                 field = config_model._meta.get_field(key)

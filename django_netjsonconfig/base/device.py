@@ -77,7 +77,7 @@ class AbstractDevice(BaseModel):
         if not self._has_config():
             return None
         attr = getattr(self.config, attr)
-        return attr() if callable(attr) else attr
+        return attr() if hasattr(attr, '__call__') else attr
 
     @property
     def backend(self):

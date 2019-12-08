@@ -45,7 +45,7 @@ def schema(request):
     returns configuration checksum
     """
     authenticated = request.user.is_authenticated
-    if callable(authenticated):
+    if hasattr(authenticated, '__call__'):
         authenticated = authenticated()
     if authenticated:
         c = available_schemas_json

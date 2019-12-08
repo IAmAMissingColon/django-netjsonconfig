@@ -137,7 +137,7 @@ class TestVpn(TestVpnX509Mixin, CreateConfigMixin,
         vpn = self._create_vpn()
         auto = vpn.auto_client()
         context_keys = vpn._get_auto_context_keys()
-        for key in context_keys.keys():
+        for key in list(context_keys.keys()):
             context_keys[key] = '{{%s}}' % context_keys[key]
         control = vpn.backend_class.auto_client(host=vpn.host,
                                                 server=self._vpn_config['openvpn'][0],
@@ -165,7 +165,7 @@ class TestVpn(TestVpnX509Mixin, CreateConfigMixin,
         vpn = self._create_vpn()
         auto = vpn.auto_client(auto_cert=False)
         context_keys = vpn._get_auto_context_keys()
-        for key in context_keys.keys():
+        for key in list(context_keys.keys()):
             context_keys[key] = '{{%s}}' % context_keys[key]
         for key in ['cert_path', 'cert_contents', 'key_path', 'key_contents']:
             del context_keys[key]

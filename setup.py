@@ -28,7 +28,7 @@ if sys.argv[-1] == 'publish':
     os.system("rm -rf dist build")
     args = {'version': get_version()}
     print("You probably want to also tag the version now:")
-    print("  git tag -a %(version)s -m 'version %(version)s'" % args)
+    print(("  git tag -a %(version)s -m 'version %(version)s'" % args))
     print("  git push --tags")
     sys.exit()
 

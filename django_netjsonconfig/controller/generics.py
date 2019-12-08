@@ -121,7 +121,7 @@ class BaseDeviceRegisterView(UpdateLastIpMixin, CsrfExtemptMixin, View):
         device_model = self.model
         config_model = device_model.get_config_model()
         options = {}
-        for attr in kwargs.keys():
+        for attr in list(kwargs.keys()):
             # skip attributes that are not model fields
             try:
                 device_model._meta.get_field(attr)

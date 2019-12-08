@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import six
 from django.db import migrations, models
@@ -34,7 +34,7 @@ def forward(apps, schema_editor):
                     v['proto'] = 'udp'
                 if 'dev' not in v:
                     v['dev'] = v['name']
-                for key, value in v.items():
+                for key, value in list(v.items()):
                     if value == '1':
                         v[key] = True
                     elif value == '0':
